@@ -1,6 +1,10 @@
 'use client';
 
-import { youtubeVideoIds } from "@/lib/content";
+export const youtubeVideoIds = [
+  'dQw4w9WgXcQ',
+  'dQw4w9WgXcQ',
+  'dQw4w9WgXcQ',
+];
 
 const YouTubeVideos = () => {
 	return (
