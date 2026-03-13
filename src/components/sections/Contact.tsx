@@ -45,11 +45,44 @@ const ContactSection = () => {
     setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-  };
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+
+  try {
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbybLRJOVlhROwbSygeJX4dJSHgYsWUZY4qzbLGPeJH427jggo6MSze30pVXQQ3u-YlumQ/exec",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nombre: formData.name,
+          email: formData.email,
+          telefono: formData.phone,
+          servicio: formData.service,
+          mensaje: formData.message,
+        }),
+      }
+    );
+
+    if (response.ok) {
+      setSubmitted(true);
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+
+      setTimeout(() => setSubmitted(false), 4000);
+    }
+  } catch (error) {
+    console.error("Error enviando formulario:", error);
+  }
+};
 
   const contactIcons: Record<string, ReactNode> = {
     address: <FiMapPin className="h-6 w-6" strokeWidth={2} />,
