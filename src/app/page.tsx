@@ -9,6 +9,7 @@ import Process from "@/components/sections/Process";
 import Services from "@/components/sections/Services";
 import Team from "@/components/sections/Team";
 import Testimonials from "@/components/sections/Testimonials";
+import YouTubeVideos from "@/components/sections/YouTubeVideos";
 
 export default function Home() {
   return (
@@ -20,6 +21,7 @@ export default function Home() {
       <About />
       <Allies />
       <Testimonials />
+      <YouTubeVideos />
       <Team />
       <FaqSection />
       <PrimaryCta />
