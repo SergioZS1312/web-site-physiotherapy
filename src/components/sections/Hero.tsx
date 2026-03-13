@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiActivity, FiClock, FiHome } from "react-icons/fi";
 
@@ -47,10 +48,18 @@ const HeroSection = () => {
         {heroImages.map((image, index) => (
           <div
             key={image}
-            className={`absolute inset-0 bg-cover bg-center brightness-90 saturate-95 transition-opacity duration-1000 ${index === activeImage ? "opacity-100" : "opacity-0"}`}
-            style={{ backgroundImage: `url('${image}')` }}
+            className={`absolute inset-0 transition-opacity duration-1000 ${index === activeImage ? "opacity-100" : "opacity-0"}`}
             aria-hidden="true"
-          />
+          >
+            <Image
+              src={image}
+              alt=""
+              fill
+              className="object-cover object-center brightness-90 saturate-95"
+              priority={index === 0}
+              unoptimized
+            />
+          </div>
         ))}
       </div>
 

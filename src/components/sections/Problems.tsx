@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 export const problemsContent = {
   title: "Problemas que tratamos",
   description:
@@ -86,10 +88,16 @@ const ProblemsSection = () => {
               className="group relative h-80 overflow-hidden transition-all duration-500 hover:scale-[1.02]"
             >
               {/* Background Image */}
-              <div
-                className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                style={{ backgroundImage: `url('${problem.image}')` }}
-              />
+              <div className="absolute inset-0">
+                <Image
+                  src={problem.image}
+                  alt={problem.title}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                  unoptimized
+                />
+              </div>
 
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-linear-to-t from-primary-950/95 via-primary-900/60 to-transparent transition-opacity duration-500 group-hover:from-primary-700/95 group-hover:via-primary-700/70" />

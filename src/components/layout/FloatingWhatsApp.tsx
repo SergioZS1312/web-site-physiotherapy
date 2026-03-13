@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { FaWhatsapp } from "react-icons/fa";
+import { FaWhatsapp } from "react-icons/fa6";
 
 const FloatingWhatsApp = () => {
   const [showTooltip, setShowTooltip] = useState<boolean>(false);

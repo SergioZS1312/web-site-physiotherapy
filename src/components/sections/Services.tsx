@@ -1,6 +1,7 @@
 'use client';
 
 import { ReactNode } from 'react';
+import Image from 'next/image';
 
 import { FiActivity, FiHeart, FiZap } from "react-icons/fi";
 import { FaDumbbell, FaHandPaper, FaShieldAlt } from "react-icons/fa";
@@ -84,42 +85,72 @@ const ServicesSection = () => {
           <div className="grid grid-cols-2 gap-3">
             {/* Large Image - spans 2 rows */}
             <div className="row-span-2 overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: `url('${serviceImages[0]}')`, minHeight: '400px' }}
-              />
+              <div className="relative h-full w-full" style={{ minHeight: '400px' }}>
+                <Image
+                  src={serviceImages[0]}
+                  alt="Imagen servicio 1"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
 
             {/* Top Right Image */}
             <div className="overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: `url('${serviceImages[1]}')`, minHeight: '195px' }}
-              />
+              <div className="relative h-full w-full" style={{ minHeight: '195px' }}>
+                <Image
+                  src={serviceImages[1]}
+                  alt="Imagen servicio 2"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
 
             {/* Middle Right Image */}
             <div className="overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: `url('${serviceImages[2]}')`, minHeight: '195px' }}
-              />
+              <div className="relative h-full w-full" style={{ minHeight: '195px' }}>
+                <Image
+                  src={serviceImages[2]}
+                  alt="Imagen servicio 3"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
 
             {/* Bottom Left Image */}
             <div className="overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: `url('${serviceImages[3]}')`, minHeight: '195px' }}
-              />
+              <div className="relative h-full w-full" style={{ minHeight: '195px' }}>
+                <Image
+                  src={serviceImages[3]}
+                  alt="Imagen servicio 4"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
 
             {/* Bottom Middle Image */}
             <div className="overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: `url('${serviceImages[4]}')`, minHeight: '195px' }}
-              />
+              <div className="relative h-full w-full" style={{ minHeight: '195px' }}>
+                <Image
+                  src={serviceImages[4]}
+                  alt="Imagen servicio 5"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 33vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
           </div>
 

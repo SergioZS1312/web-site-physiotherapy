@@ -57,9 +57,9 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="mb-8 text-xs font-black uppercase tracking-[0.15em] text-primary-400">
+          <h2 className="mb-8 text-xs font-black uppercase tracking-[0.15em] text-primary-400">
             Servicios
-          </h3>
+          </h2>
           <ul className="space-y-4">
             {footerContent.serviceLinks.map((item, index) => (
               <li key={`${item}-${index}`}>
@@ -76,9 +76,9 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="mb-8 text-xs font-black uppercase tracking-[0.15em] text-primary-400">
+          <h2 className="mb-8 text-xs font-black uppercase tracking-[0.15em] text-primary-400">
             Clinica
-          </h3>
+          </h2>
           <ul className="space-y-4">
             {footerContent.clinicLinks.map((item, id) => (
               <li key={id}>
@@ -95,9 +95,9 @@ const Footer = () => {
         </div>
 
         <div>
-          <h3 className="mb-8 text-xs font-black uppercase tracking-[0.15em] text-primary-400">
+          <h2 className="mb-8 text-xs font-black uppercase tracking-[0.15em] text-primary-400">
             Contacto
-          </h3>
+          </h2>
           <ul className="space-y-4">
             <li>
               <a

@@ -1,6 +1,7 @@
 'use client';
 
 import { FiCheck } from "react-icons/fi";
+import Image from 'next/image';
 
 export const alliesAthletes = [
   { name: 'Atleta 01', discipline: 'Running', image: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80' },
@@ -50,10 +51,16 @@ const AlliesSection = () => {
               >
                 {/* Imagen grande */}
                 <div className="relative h-105 w-full overflow-hidden">
-                  <div
-                    className="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                    style={{ backgroundImage: `url('${athlete.image}')` }}
-                  />
+                  <div className="relative h-full w-full">
+                    <Image
+                      src={athlete.image}
+                      alt={athlete.name}
+                      fill
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                      className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                      unoptimized
+                    />
+                  </div>
 
                   {/* Overlay oscuro */}
                   <div className="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
@@ -126,22 +133,40 @@ const AlliesSection = () => {
           {/* Image */}
           <div className="grid grid-cols-2 gap-4">
             <div className="col-span-2 h-64 overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80')" }}
-              />
+              <div className="relative h-full w-full">
+                <Image
+                  src={'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80'}
+                  alt="Evento 1"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
             <div className="h-40 overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80')" }}
-              />
+              <div className="relative h-full w-full">
+                <Image
+                  src={'https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=800&q=80'}
+                  alt="Evento 2"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
             <div className="h-40 overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80')" }}
-              />
+              <div className="relative h-full w-full">
+                <Image
+                  src={'https://images.unsplash.com/photo-1546519638-68e109498ffc?auto=format&fit=crop&w=800&q=80'}
+                  alt="Evento 3"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -151,22 +176,40 @@ const AlliesSection = () => {
           {/* Image */}
           <div className="order-2 grid grid-cols-2 gap-4 md:order-1">
             <div className="h-40 overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80')" }}
-              />
+              <div className="relative h-full w-full">
+                <Image
+                  src={'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80'}
+                  alt="Corporativo 1"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
             <div className="h-40 overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80')" }}
-              />
+              <div className="relative h-full w-full">
+                <Image
+                  src={'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80'}
+                  alt="Corporativo 2"
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 100vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
             <div className="col-span-2 h-64 overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                style={{ backgroundImage: "url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80')" }}
-              />
+              <div className="relative h-full w-full">
+                <Image
+                  src={'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80'}
+                  alt="Corporativo 3"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                  unoptimized
+                />
+              </div>
             </div>
           </div>
 

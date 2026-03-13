@@ -9,6 +9,7 @@ import {
 } from "react-icons/fi";
 
 import { FaLightbulb, FaShieldAlt } from "react-icons/fa";
+import Image from 'next/image';
 
 const scrollToSectionById = (id: string): void => {
   const el = document.getElementById(id);
@@ -21,10 +22,17 @@ const PrimaryCtaSection = () => {
   return (
     <section className="relative overflow-hidden bg-secondary-900 px-6 py-20 md:px-[8%] md:py-28">
       {/* Background Image with Better Visibility */}
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-fixed opacity-50 scale-105 blur-[1px]"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1600&q=80')" }}
-      />
+      <div className="absolute inset-0 z-0">
+        <Image
+          src={'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1600&q=80'}
+          alt="Fondo clínica"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-50 scale-105 blur-[1px]"
+          unoptimized
+        />
+      </div>
 
       {/* Animated gradient overlay */}
       <div className="absolute inset-0 bg-linear-to-br from-primary-900/75 via-primary-800/70 to-secondary-900/80" />

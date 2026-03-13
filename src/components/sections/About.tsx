@@ -1,6 +1,7 @@
 "use client";
 
 import { ReactNode } from "react";
+import Image from "next/image";
 import { FaGraduationCap, FaHeart, FaBolt } from "react-icons/fa";
 import CounterAnimation from "../ui/CounterAnimation";
 
@@ -56,13 +57,16 @@ const AboutSection = () => {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <div className="relative">
             <div className="relative h-100 overflow-hidden">
-              <div
-                className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-105"
-                style={{
-                  backgroundImage:
-                    "url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80')",
-                }}
-              />
+              <div className="relative h-full w-full">
+                <Image
+                  src={"https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=900&q=80"}
+                  alt="Equipo de fisioterapia"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover object-center transition-transform duration-700 hover:scale-105"
+                  unoptimized
+                />
+              </div>
               <div className="absolute bottom-6 left-6 bg-primary-700 p-6 text-surface-0 shadow-xl">
                 <div className="text-4xl font-black">
                   <CounterAnimation target={15} suffix="+" />
@@ -75,31 +79,40 @@ const AboutSection = () => {
 
             <div className="mt-4 grid grid-cols-3 gap-4">
               <div className="h-28 overflow-hidden">
-                <div
-                  className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                  style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1534367610401-9f5ed68180aa?auto=format&fit=crop&w=600&q=80')",
-                  }}
-                />
+                <div className="relative h-full w-full">
+                  <Image
+                    src={"https://images.unsplash.com/photo-1534367610401-9f5ed68180aa?auto=format&fit=crop&w=600&q=80"}
+                    alt="Equipo 1"
+                    fill
+                    sizes="(max-width: 1024px) 33vw, 100vw"
+                    className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                    unoptimized
+                  />
+                </div>
               </div>
               <div className="h-28 overflow-hidden">
-                <div
-                  className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                  style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&q=80')",
-                  }}
-                />
+                <div className="relative h-full w-full">
+                  <Image
+                    src={"https://images.unsplash.com/photo-1584515933487-779824d29309?auto=format&fit=crop&w=600&q=80"}
+                    alt="Equipo 2"
+                    fill
+                    sizes="(max-width: 1024px) 33vw, 100vw"
+                    className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                    unoptimized
+                  />
+                </div>
               </div>
               <div className="h-28 overflow-hidden">
-                <div
-                  className="h-full w-full bg-cover bg-center transition-transform duration-700 hover:scale-110"
-                  style={{
-                    backgroundImage:
-                      "url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80')",
-                  }}
-                />
+                <div className="relative h-full w-full">
+                  <Image
+                    src={"https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80"}
+                    alt="Equipo 3"
+                    fill
+                    sizes="(max-width: 1024px) 33vw, 100vw"
+                    className="object-cover object-center transition-transform duration-700 hover:scale-110"
+                    unoptimized
+                  />
+                </div>
               </div>
             </div>
           </div>

@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 export const teamMembers = [
   {
     name: 'Dra. Laura Martinez',
@@ -51,10 +53,13 @@ const TeamSection = () => {
               className="group w-[85vw] max-w-[320px] shrink-0 snap-start overflow-hidden border-t-4 border-primary-600 bg-surface-0 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
             >
               <div className="relative h-72 overflow-hidden">
-                <img
+                <Image
                   src={member.image}
                   alt={member.name}
-                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  fill
+                  sizes="(max-width: 640px) 85vw, 320px"
+                  className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                  unoptimized
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-secondary-900/80 to-transparent p-4">
                   <p className="text-xs font-bold uppercase tracking-wider text-primary-200">{member.experience}</p>
