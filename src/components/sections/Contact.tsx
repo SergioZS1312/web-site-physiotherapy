@@ -92,7 +92,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
   return (
     <section
       id="contact"
-      className="bg-surface-0 px-6 py-24 md:px-[8%] md:py-28"
+      className="bg-surface-0 px-6 py-24 md:px-[8%] md:py-28" 
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center md:mb-16">
