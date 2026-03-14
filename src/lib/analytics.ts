@@ -1,27 +1,24 @@
-// ── Google Analytics ──────────────────────────────────────────────────────────
-export const gaEvent = (action: string, params?: Record<string, string>) => {
-  if (typeof window === "undefined" || !window.gtag) return;
-  window.gtag("event", action, params);
-};
+// Empuja al dataLayer si gtag no está listo todavía
+const pushEvent = (eventName: string, params: Record<string, unknown>) => {
+  if (typeof window === "undefined") return;
 
-// ── Meta Pixel ────────────────────────────────────────────────────────────────
-export const pixelEvent = (event: string, params?: Record<string, unknown>) => {
-  if (typeof window === "undefined" || !window.fbq) return;
-  window.fbq("track", event, params);
-};
-
-// ── Evento de conversión — formulario enviado ─────────────────────────────────
-export const trackFormSubmit = (service: string) => {
-  console.log("trackFormSubmit llamado con:", service);        // ← debug
-  console.log("window.gtag disponible:", typeof window.gtag); // ← debug
-
-  if (typeof window === "undefined" || !window.gtag) {
-    console.warn("gtag no disponible");
-    return;
+  if (typeof window.gtag === "function") {
+    window.gtag("event", eventName, params);
+  } else {
+    // gtag no cargó aún — empujar directo al dataLayer
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+      event:         eventName,
+      ...params,
+    });
+    console.log("Evento enviado via dataLayer:", eventName, params);
   }
+};
 
-  window.gtag("event", "generate_lead", {
+export const trackFormSubmit = (service: string) => {
+  if (typeof window === "undefined") return;
+  pushEvent("generate_lead", {
     event_category: "formulario",
-    event_label: service,
+    event_label:    service,
   });
 };
