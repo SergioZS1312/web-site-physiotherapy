@@ -3,8 +3,18 @@
 import { ReactNode } from "react";
 import { FiClock, FiMapPin, FiPhone } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
-
 import ContactForm from "./ContactForm";
+import dynamic from "next/dynamic";
+
+// Carga dinámica para evitar errores de SSR
+const CalEmbed = dynamic(() => import("@/components/sections/CalEmbed"), {
+  ssr: false,
+  loading: () => (
+    <div className="flex h-96 items-center justify-center">
+      <p className="text-secondary-400">Cargando calendario...</p>
+    </div>
+  ),
+});
 
 export const contactInfoItems = [
   {
@@ -34,6 +44,18 @@ const ContactSection = () => {
       id="contact"
       className="bg-surface-0 px-6 py-24 md:px-[8%] md:py-28"
     >
+      <section className="py-16">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="mb-2 text-center text-3xl font-black uppercase tracking-wide text-secondary-900">
+            Agenda tu cita
+          </h2>
+          <p className="mb-8 text-center text-secondary-500">
+            Selecciona el día y hora que mejor te convenga
+          </p>
+          <CalEmbed />
+        </div>
+      </section>
+      
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center md:mb-16">
           <h2

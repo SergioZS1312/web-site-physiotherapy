@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect } from "react";
+import { getCalApi } from "@calcom/embed-react";
 
 type SuccessModalProps = {
   isOpen: boolean;
   onClose: () => void;
   name: string;
 };
+
+const CAL_LINK = "tu-usuario/cita-fisioterapia"; // ← tu link
 
 const SOCIAL_LINKS = [
   // ← Cambia estos links por los tuyos
@@ -40,6 +43,13 @@ export default function SuccessModal({
   if (!isOpen) return null;
 
   const firstName = name.split(" ")[0];
+
+  useEffect(() => {
+    (async () => {
+      const cal = await getCalApi({ namespace: "cita-fisioterapia" });
+      cal("ui", { theme: "light", hideEventTypeDetails: false });
+    })();
+  }, []);
 
   return (
     // Overlay
@@ -100,6 +110,15 @@ export default function SuccessModal({
             ))}
           </div>
         </div>
+
+        <button
+          data-cal-namespace="cita-fisioterapia"
+          data-cal-link={CAL_LINK}
+          data-cal-config='{"layout":"month_view"}'
+          className="mb-4 w-full border-2 border-primary-700 px-8 py-3 font-black uppercase tracking-wide text-primary-700 transition-all hover:bg-primary-700 hover:text-surface-0"
+        >
+          📅 Agendar cita ahora
+        </button>
 
         {/* Botón cerrar */}
         <button
