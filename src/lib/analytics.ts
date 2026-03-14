@@ -12,15 +12,16 @@ export const pixelEvent = (event: string, params?: Record<string, unknown>) => {
 
 // ── Evento de conversión — formulario enviado ─────────────────────────────────
 export const trackFormSubmit = (service: string) => {
-  // Google Analytics
-  gaEvent("generate_lead", {
+  console.log("trackFormSubmit llamado con:", service);        // ← debug
+  console.log("window.gtag disponible:", typeof window.gtag); // ← debug
+
+  if (typeof window === "undefined" || !window.gtag) {
+    console.warn("gtag no disponible");
+    return;
+  }
+
+  window.gtag("event", "generate_lead", {
     event_category: "formulario",
     event_label: service,
-  });
-
-  // Meta Pixel — Lead es el evento estándar para formularios de contacto
-  pixelEvent("Lead", {
-    content_name: service,
-    content_category: "fisioterapia",
   });
 };
