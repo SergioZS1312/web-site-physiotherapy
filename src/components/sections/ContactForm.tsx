@@ -2,6 +2,7 @@
 
 import { ChangeEvent, FormEvent, useState, useRef } from "react";
 import SuccessModal from "./SuccessModal";
+import { trackFormSubmit } from "@/lib/analytics";
 
 interface FormData {
   name: string;
@@ -106,6 +107,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
         body: JSON.stringify(sanitized),
       });
 
+      trackFormSubmit(formData.service);
       setSubmittedName(formData.name);
       setShowModal(true);
       setFormData({ name: "", email: "", phone: "", service: "", message: "" });

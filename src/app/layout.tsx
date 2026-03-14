@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Oswald, Sora } from "next/font/google";
 import { ScrollProvider } from "../components/layout/ScrollProvider";
+import Analytics from "@/components/sections/Analytics";
 import "./globals.css";
 
 const sora = Sora({
@@ -33,7 +34,10 @@ export default function RootLayout({
       <body
         className={`${sora.variable} ${oswald.variable} ${jetbrainsMono.variable} antialiased`}
       >
-        <ScrollProvider>{children}</ScrollProvider>
+        <ScrollProvider>
+          <Analytics />
+          {children}
+        </ScrollProvider>
       </body>
     </html>
   );
