@@ -1,16 +1,10 @@
 "use client";
 
-import { ChangeEvent, FormEvent, ReactNode, useState } from "react";
+import { ReactNode } from "react";
 import { FiClock, FiMapPin, FiPhone } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
 
-interface FormData {
-  name: string;
-  email: string;
-  phone: string;
-  service: string;
-  message: string;
-}
+import ContactForm from "./ContactForm";
 
 export const contactInfoItems = [
   {
@@ -30,60 +24,6 @@ export const contactInfoItems = [
 ];
 
 const ContactSection = () => {
-  const [formData, setFormData] = useState<FormData>({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-  });
-  const [submitted, setSubmitted] = useState<boolean>(false);
-
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
-  ) => {
-    setFormData((prev) => ({ ...prev, [e.target.id]: e.target.value }));
-  };
-
-const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-
-  try {
-    const response = await fetch(
-      "https://script.google.com/macros/s/AKfycbybLRJOVlhROwbSygeJX4dJSHgYsWUZY4qzbLGPeJH427jggo6MSze30pVXQQ3u-YlumQ/exec",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          nombre: formData.name,
-          email: formData.email,
-          telefono: formData.phone,
-          servicio: formData.service,
-          mensaje: formData.message,
-        }),
-      }
-    );
-
-    if (response.ok) {
-      setSubmitted(true);
-
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        message: "",
-      });
-
-      setTimeout(() => setSubmitted(false), 4000);
-    }
-  } catch (error) {
-    console.error("Error enviando formulario:", error);
-  }
-};
-
   const contactIcons: Record<string, ReactNode> = {
     address: <FiMapPin className="h-6 w-6" strokeWidth={2} />,
     hours: <FiClock className="h-6 w-6" strokeWidth={2} />,
@@ -92,7 +32,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
   return (
     <section
       id="contact"
-      className="bg-surface-0 px-6 py-24 md:px-[8%] md:py-28" 
+      className="bg-surface-0 px-6 py-24 md:px-[8%] md:py-28"
     >
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center md:mb-16">
@@ -113,123 +53,7 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         <div className="grid gap-12 lg:grid-cols-2">
           {/* Left: Contact Form */}
           <div className="order-2 lg:order-1">
-            <div className="border-t-4 border-primary-600 bg-surface-0 p-8 shadow-lg md:p-10">
-              {submitted && (
-                <div className="mb-8 border-l-4 border-primary-500 bg-primary-50 p-4 text-primary-800">
-                  <strong>✓ ¡Mensaje enviado!</strong> Te contactaremos pronto.
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Name */}
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="mb-2 block text-sm font-bold uppercase tracking-wide text-secondary-700"
-                  >
-                    Nombre completo *
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    required
-                    value={formData.name}
-                    onChange={handleChange}
-                    className="w-full border-2 border-secondary-200 bg-muted-50 px-4 py-3 text-secondary-900 transition-all focus:border-primary-600 focus:bg-surface-0 focus:outline-none"
-                    placeholder="Tu nombre"
-                  />
-                </div>
-
-                {/* Email */}
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-2 block text-sm font-bold uppercase tracking-wide text-secondary-700"
-                  >
-                    Correo electrónico *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    required
-                    value={formData.email}
-                    onChange={handleChange}
-                    className="w-full border-2 border-secondary-200 bg-muted-50 px-4 py-3 text-secondary-900 transition-all focus:border-primary-600 focus:bg-surface-0 focus:outline-none"
-                    placeholder="tu@email.com"
-                  />
-                </div>
-
-                {/* Phone */}
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="mb-2 block text-sm font-bold uppercase tracking-wide text-secondary-700"
-                  >
-                    Teléfono / WhatsApp *
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    required
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full border-2 border-secondary-200 bg-muted-50 px-4 py-3 text-secondary-900 transition-all focus:border-primary-600 focus:bg-surface-0 focus:outline-none"
-                    placeholder="+57 123 456 7890"
-                  />
-                </div>
-
-                {/* Service */}
-                <div>
-                  <label
-                    htmlFor="service"
-                    className="mb-2 block text-sm font-bold uppercase tracking-wide text-secondary-700"
-                  >
-                    Servicio de interés *
-                  </label>
-                  <select
-                    id="service"
-                    required
-                    value={formData.service}
-                    onChange={handleChange}
-                    className="w-full border-2 border-secondary-200 bg-muted-50 px-4 py-3 text-secondary-900 transition-all focus:border-primary-600 focus:bg-surface-0 focus:outline-none"
-                  >
-                    <option value="">Selecciona un servicio</option>
-                    <option value="deportiva">Fisioterapia deportiva</option>
-                    <option value="manual">Terapia manual</option>
-                    <option value="rehab">Rehabilitación física</option>
-                    <option value="electro">Electroterapia</option>
-                    <option value="maso">Masoterapia</option>
-                    <option value="post">Rehabilitación postoperatoria</option>
-                  </select>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="mb-2 block text-sm font-bold uppercase tracking-wide text-secondary-700"
-                  >
-                    Mensaje (opcional)
-                  </label>
-                  <textarea
-                    id="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full border-2 border-secondary-200 bg-muted-50 px-4 py-3 text-secondary-900 transition-all focus:border-primary-600 focus:bg-surface-0 focus:outline-none"
-                    placeholder="Cuéntanos brevemente sobre tu situación..."
-                  />
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  className="w-full bg-primary-700 px-8 py-4 font-black uppercase tracking-wide text-surface-0 transition-all duration-300 hover:bg-primary-800 hover:shadow-xl"
-                >
-                  Enviar solicitud
-                </button>
-              </form>
-            </div>
+            <ContactForm />
           </div>
 
           {/* Right: Info & Map */}
