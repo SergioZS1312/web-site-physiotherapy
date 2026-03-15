@@ -187,7 +187,7 @@ const ContactForm = ({ onSuccess }: ContactFormProps) => {
             <textarea id="message" value={formData.message} onChange={handleChange} rows={4} maxLength={500}
               className="w-full border-2 border-secondary-200 bg-muted-50 px-4 py-3 text-secondary-900 transition-all focus:border-primary-600 focus:bg-surface-0 focus:outline-none"
               placeholder="Cuéntanos brevemente sobre tu situación..." />
-            <p className="mt-1 text-right text-xs text-secondary-400">{formData.message.length}/500</p>
+            <p className="mt-1 text-right text-xs text-secondary-700">{formData.message.length}/500</p>
           </div>
 
           <button type="submit" disabled={status === "loading" || isBlocked}

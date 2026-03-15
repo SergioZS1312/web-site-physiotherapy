@@ -65,7 +65,7 @@ export default function SuccessModal({
         {/* Botón cerrar */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 text-secondary-400 transition-colors hover:text-secondary-700"
+          className="absolute right-4 top-4 text-secondary-700 transition-colors hover:text-secondary-900"
           aria-label="Cerrar"
         >
           ✕
@@ -86,7 +86,7 @@ export default function SuccessModal({
           Gracias, <strong>{firstName}</strong>. Nos pondremos en contacto
           contigo a la brevedad.
         </p>
-        <p className="mb-6 text-center text-sm text-secondary-400">
+        <p className="mb-6 text-center text-sm text-secondary-600">
           Revisa tu correo — te enviamos una confirmación.
         </p>
 
@@ -111,14 +111,14 @@ export default function SuccessModal({
           </div>
         </div>
 
-        <button
+        {/* <button
           data-cal-namespace="cita-fisioterapia"
           data-cal-link={CAL_LINK}
           data-cal-config='{"layout":"month_view"}'
           className="mb-4 w-full border-2 border-primary-700 px-8 py-3 font-black uppercase tracking-wide text-primary-700 transition-all hover:bg-primary-700 hover:text-surface-0"
         >
           📅 Agendar cita ahora
-        </button>
+        </button> */}
 
         {/* Botón cerrar */}
         <button

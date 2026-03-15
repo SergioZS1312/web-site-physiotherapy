@@ -44,7 +44,7 @@ const ContactSection = () => {
       id="contact"
       className="bg-surface-0 px-6 py-24 md:px-[8%] md:py-28"
     >
-      <section className="py-16">
+      {/* <section className="py-16">
         <div className="mx-auto max-w-4xl px-4">
           <h2 className="mb-2 text-center text-3xl font-black uppercase tracking-wide text-secondary-900">
             Agenda tu cita
@@ -54,7 +54,7 @@ const ContactSection = () => {
           </p>
           <CalEmbed />
         </div>
-      </section>
+      </section> */}
       
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 text-center md:mb-16">
