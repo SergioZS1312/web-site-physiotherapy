@@ -7,14 +7,14 @@ import ContactForm from "./ContactForm";
 import dynamic from "next/dynamic";
 
 // Carga dinámica para evitar errores de SSR
-const CalEmbed = dynamic(() => import("@/components/sections/CalEmbed"), {
-  ssr: false,
-  loading: () => (
-    <div className="flex h-96 items-center justify-center">
-      <p className="text-secondary-400">Cargando calendario...</p>
-    </div>
-  ),
-});
+// const CalEmbed = dynamic(() => import("@/components/sections/CalEmbed"), {
+//   ssr: false,
+//   loading: () => (
+//     <div className="flex h-96 items-center justify-center">
+//       <p className="text-secondary-400">Cargando calendario...</p>
+//     </div>
+//   ),
+// });
 
 export const contactInfoItems = [
   {

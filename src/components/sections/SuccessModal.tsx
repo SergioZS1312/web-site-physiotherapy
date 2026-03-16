@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { getCalApi } from "@calcom/embed-react";
+import { FaInstagram, FaFacebook, FaWhatsapp } from "react-icons/fa";
 
 type SuccessModalProps = {
   isOpen: boolean;
@@ -13,9 +14,9 @@ const CAL_LINK = "tu-usuario/cita-fisioterapia"; // ← tu link
 
 const SOCIAL_LINKS = [
   // ← Cambia estos links por los tuyos
-  { label: "Instagram", href: "https://instagram.com/tu_usuario", icon: "📸" },
-  { label: "Facebook", href: "https://facebook.com/tu_pagina", icon: "👍" },
-  { label: "WhatsApp", href: "https://wa.me/573001234567", icon: "💬" },
+  { label: "Instagram", href: "https://instagram.com/tu_usuario", Icon: FaInstagram },
+  { label: "Facebook", href: "https://facebook.com/tu_pagina", Icon: FaFacebook },
+  { label: "WhatsApp", href: "https://wa.me/573001234567", Icon: FaWhatsapp },
 ];
 
 export default function SuccessModal({
@@ -40,16 +41,19 @@ export default function SuccessModal({
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
-
-  const firstName = name.split(" ")[0];
-
+  // Configurar Cal.com sólo cuando el modal está abierto.
   useEffect(() => {
+    if (!isOpen) return;
+
     (async () => {
       const cal = await getCalApi({ namespace: "cita-fisioterapia" });
       cal("ui", { theme: "light", hideEventTypeDetails: false });
     })();
-  }, []);
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  const firstName = name.split(" ")[0];
 
   return (
     // Overlay
@@ -96,16 +100,16 @@ export default function SuccessModal({
             Síguenos en redes
           </p>
           <div className="flex justify-center gap-3">
-            {SOCIAL_LINKS.map(({ label, href, icon }) => (
+            {SOCIAL_LINKS.map(({ label, href, Icon }) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 border-2 border-secondary-200 px-4 py-2 text-sm font-semibold text-secondary-700 transition-all hover:border-primary-600 hover:text-primary-700"
+                aria-label={label}
+                className="flex h-11 w-11 items-center justify-center rounded-full border-2 border-secondary-200 text-secondary-700 transition-all hover:border-primary-600 hover:text-primary-700"
               >
-                <span>{icon}</span>
-                <span>{label}</span>
+                <Icon className="h-5 w-5" aria-hidden="true" />
               </a>
             ))}
           </div>
